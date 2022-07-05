@@ -1,0 +1,100 @@
+<!-- <p>limited-banner-sale works!</p> -->
+<div class="banner" [class.banner-right]="cardClicked == 'right'">
+    <div class="banner__header">
+        <div class="banner__header-item" (click)="cardClicked = 'left'" 
+            [class.banner__header-item--active]="cardClicked == 'left'">
+            <div class="banner__header-item__title">
+                Gaming Gear
+            </div>
+            <div class="banner__header-item__des">
+                From 200 AUD
+            </div>
+        </div>
+        <div class="banner__header-item" (click)="cardClicked = 'right'"
+            [class.banner__header-item--active]="cardClicked == 'right'">
+            <div class="banner__header-item__title">
+                Office - Tablet
+            </div>
+            <div class="banner__header-item__des">
+                Sale up to 30%
+            </div>
+        </div>
+    </div>
+    <!-- loader_sv.isLoading | async -->
+    <ng-container class="banner__content" *ngIf="cardClicked == 'left'; else right">
+        <div class="banner__content__view-all-btn">
+            <span>View all <i class="fa-solid fa-chevron-right"></i></span>
+        </div>
+        <div class="banner__content__main" *ngIf="productList.length != 0">
+            <div class="banner__content__main__timer">
+                <app-timer [deadline]="deadline"></app-timer>
+            </div>
+            <div class="banner__content__main__carousel">
+                <swiper
+                    [slidesPerView]="5"
+                    [spaceBetween]="10"
+                    [slidesPerGroup]="4"
+                    [loop]="false"
+                    [loopFillGroupWithBlank]="true"
+                    [pagination]="{
+                        clickable: false
+                    }"
+                    showsPagination={false}
+                    [navigation]="true"
+                    class="mySwiper">
+                    <ng-template swiperSlide *ngFor = "let product of productList">
+                        <a [routerLink]="['/product', product._id]">
+                            <app-product-card 
+                                [image]="product.image"
+                                [name]="product.name"
+                                [price]="product.price"
+                                [sale]=20
+                                [size]="size"
+                            >
+                            </app-product-card>  
+                        </a>  
+                    </ng-template>
+                </swiper>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #right>
+        <div class="banner__content__view-all-btn">
+            <span>View all <i class="fa-solid fa-chevron-right"></i></span>
+        </div>
+        <div class="banner__content__main">
+            <div class="banner__content__main__timer">
+                <app-timer [deadline]="deadline"></app-timer>
+            </div>
+            <div class="banner__content__main__carousel">
+                <swiper
+                    [slidesPerView]="5"
+                    [spaceBetween]="10"
+                    [slidesPerGroup]="5"
+                    [loop]="false"
+                    [loopFillGroupWithBlank]="true"
+                    [pagination]="{
+                        clickable: false
+                    }"
+                    showsPagination={false}
+                    [navigation]="true"
+                    class="mySwiper">
+                    <ng-template swiperSlide *ngFor = "let product of productList">
+                        <app-product-card 
+                            [image]="product.image"
+                            [name]="product.name"
+                            [price]="product.price"
+                            [sale]=20
+                            [size]="size"
+                        >
+                        </app-product-card>     
+                    </ng-template>
+                </swiper>
+            </div>
+        </div>
+    </ng-template>
+    <div *ngIf = "loader_sv.isLoading | async" class="loading">
+        <mat-spinner></mat-spinner>
+    </div>
+</div>
+

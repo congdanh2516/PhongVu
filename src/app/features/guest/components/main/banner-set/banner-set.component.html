@@ -1,0 +1,12 @@
+<div class="banner">
+    <div class="banner__title">
+        <span>
+            <ng-content></ng-content>
+        </span>
+    </div>
+    <div class="banner__content">
+        <div class="banner__content__item" *ngFor = "let item of pictureArray" [ngStyle]="{width: width}">
+            <img [src]="item.src" alt="">
+        </div>
+    </div>
+</div>

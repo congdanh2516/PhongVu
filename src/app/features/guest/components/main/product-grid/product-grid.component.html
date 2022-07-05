@@ -1,0 +1,21 @@
+<div class="product">
+    <div class="product__title">
+        Product
+    </div>
+    <div class="product__grid">
+        <div class="product__grid__item" *ngFor = "let product of productList | paginate: { itemsPerPage: 5, currentPage: p }">
+            <app-product-card 
+                [image]="product.image"
+                [name]="product.name"
+                [price]="product.price"
+                [sale]=20
+                [size]="size"
+            >
+            </app-product-card> 
+        </div> 
+    </div>
+</div>
+
+<div class="product__pagination">
+    <pagination-controls (pageChange)="p = $event" previousLabel="<" nextLabel=">"></pagination-controls>
+</div>

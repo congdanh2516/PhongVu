@@ -1,0 +1,85 @@
+@import '../../../../../../styles.scss';
+.product-card {
+    cursor: pointer;
+    position: relative;
+    // width: 178px;
+    // height: 266px;
+    box-sizing: border-box;
+    padding: 16px;
+    background-color: white;
+    &__img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 65%;
+        width: 100%;
+        overflow: hidden;
+        padding: 20px;
+        img {
+            position: relative;
+            width: 100%;
+            transition: all .3s ease;
+        }
+        &:hover img{
+            transform: scale(1.05);
+        }
+    }
+    &__name {
+        height: 15%;
+        font : {
+            size: 12px;
+        }
+        color: black;
+    }
+    &__price {
+        height: 10%;
+        vertical-align: middle;
+        display: flex;
+        align-items: center;
+        color: $main-blue;
+        font : {
+            size: 15px;
+            weight: bold;
+        }   
+    }
+    &__sale {
+        height: 10%;
+        vertical-align: middle;
+        display: flex;
+        align-items: center;
+        color: black;
+        font : {
+            size: 12px;
+        }
+        &-origin {
+            opacity: .8;
+            text-decoration: line-through;
+        }
+        &-percent {
+            margin-left: 5px;
+            color: $main-blue;
+        }
+    }
+    &__sale-card {
+        position: absolute;
+        top: 47%;
+        height: 36px;
+        padding: 4px 8px;
+        border-radius: 5px;
+        background-image: url('../../../../../../assets/images/products/sale-card.svg');
+        .top {
+            height: 11px;
+            font : {
+                size: 10px;
+            }
+            color: #ffd591;
+        }
+        .bottom {
+            font : {
+                size: 13px;
+                weight: bold;
+            }
+            color: white;
+        }
+    }
+}

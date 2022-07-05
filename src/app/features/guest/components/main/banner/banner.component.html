@@ -1,0 +1,39 @@
+<!-- <p>banner works!</p> -->
+
+<div class="banner">
+    <div class="banner-slide">
+        <div class="slideshow-container">
+            <div *ngFor="let image of imageArray; index as i">
+                <div class="mySlides fade1" [style.display]="i==currentIndexImage ? 'block' : 'none'">
+                    <img [src]="image.src">
+                </div>
+            </div>
+        </div>
+        <div class="dot-list">
+            <span *ngFor="let image of imageArray; index as i" class="dot-list__item" 
+                (click)="transferImage(i)"
+                [class.active]="i==currentIndexImage">
+            </span> 
+        </div>
+    </div>
+
+    <div class="banner__category">
+        <app-category></app-category>
+    </div>
+
+    <div class="banner-card">
+        <div class="banner-card__item">
+            <img src="../../../../../assets/images/banner/unnamed (13).webp" alt="">
+        </div>
+        <div class="banner-card__item">
+            <img src="../../../../../assets/images/banner/unnamed (12).webp" alt="">
+        </div>
+        <div class="banner-card__item">
+            <img src="../../../../../assets/images/banner/unnamed (11).webp" alt="">
+        </div>
+        <div class="banner-card__item">
+            <img src="../../../../../assets/images/banner/unnamed (10).webp" alt="">
+        </div>
+    </div>    
+</div>
+

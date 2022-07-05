@@ -1,0 +1,47 @@
+<!-- <p>app-category works!</p> -->
+<div class="category" *ngIf="categoryList.length!=0">
+    <div class="category__item">
+        <ul>
+            <li *ngFor="let category of categoryList; index as i" (mouseover)="showDes(category.name)" (mouseout)="hideDes = true">
+                <div class="img">
+                    <img [src]="category.image" alt="">
+                </div>
+                <div class="title">
+                    <a href="#">{{ category.name }}</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- itemName=='' ? 'none' : 'block' -->
+    <div class="category__des" [style.display]="!hideDes ? 'block' : 'none'" (mouseover)="showDes(itemName)" (mouseout)="hideDes = true">
+        <ng-container *ngFor="let category of categoryList">
+            <ng-template [ngIf]="itemName==category.name">
+                {{category.name}} <br/> <br/>
+                <div class="category__des__price">
+                    <div class="category__des__price__title">
+                        Price level
+                    </div>
+                    <div class="category__des__price__des">
+                        <ul>
+                            <li>
+                                <a href="">Under 500 AUD</a>
+                            </li>
+                            <li>
+                                <a href="">500 - 1000 AUD</a>
+                            </li>
+                            <li>
+                                <a href="">1000 - 1500 AUD</a>
+                            </li>
+                            <li>
+                                <a href="">1500 - 2000</a>
+                            </li>
+                            <li>
+                                <a href="">Above 2000</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </ng-template>
+        </ng-container>
+    </div>
+</div>

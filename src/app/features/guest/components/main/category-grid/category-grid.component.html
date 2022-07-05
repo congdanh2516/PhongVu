@@ -1,0 +1,28 @@
+<div class="category">
+    <div class="category__title">
+        <div class="category__title-name">
+            <ng-content></ng-content>
+        </div>
+        <div class="category__title-view-all">
+            View all &nbsp; <i class="fa-solid fa-chevron-right"></i>
+        </div>
+    </div>
+    <div class="category__content">
+        <div class="category__content__image">
+            <img src="https://lh3.googleusercontent.com/Gc9z_P0lY-0fDemLmqiYt2U7uD6meaQbcsRj0LG6O6a9keMfQZlvodVv8KKAP6U7UVUPpkzmFUfkmMIJIhultS8NnuutrIm-=rw-w400" alt="">
+        </div>
+        <div class="category__content__category">
+            <div class="category__content__category__item" *ngFor = "let item of categoryArray">
+                <div class="category__content__category__item__title">
+                    {{ item.name }}
+                </div>
+                <div class="category__content__category__item__des">
+                   {{ item.description  | briefNameProduct : 20 }}
+                </div>
+                <div class="category__content__category__item__image">
+                    <img [src]="item.image" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

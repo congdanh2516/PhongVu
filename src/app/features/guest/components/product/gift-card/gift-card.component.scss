@@ -1,0 +1,52 @@
+@import '../../../../../../styles.scss';
+.gift {
+    height: 90px;
+    border: 1px solid $main-blue;
+    border-radius: 8px;
+    display: grid;
+    padding: 12px;
+    display: flex;
+    background-color: rgb(255, 245, 246);
+    &--active {
+        background-color: transparent;
+        border: 1px solid rgba(128, 128, 128, 0.452);
+    }
+    &__image {
+        height: 64px;
+        width: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fbecec;
+    }
+    &__content {
+        margin-left: 15px;
+        flex: 1 1 0%;
+        display: flex;
+        flex-direction: column;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        &__top {
+            font : {
+                size: 13px;
+                weight: bold;
+                family: Roboto;
+            }
+        }
+        &__bottom {
+            display: flex;
+            justify-content: space-between;
+            &__expire {
+                color: #82869E;
+            }
+            button {
+                border: none;
+                background-color: transparent;
+                color: $main-blue;
+                font : {
+                    size: 13px;
+                }
+            }
+        }
+    }
+}

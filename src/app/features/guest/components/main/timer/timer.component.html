@@ -1,0 +1,10 @@
+<div class="timer">
+    <div class="timer__text">
+        Just only <span class="day">{{ day }}</span> day<span *ngIf="day > 1">s</span>
+    </div>
+    <div class="timer__timeout">
+        <div><span *ngIf="hour < 10">0</span>{{ hour }}</div>
+        <div><span *ngIf="minute < 10">0</span>{{ minute }}</div>
+        <div><span *ngIf="second < 10">0</span>{{ second }}</div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="brand">
+    <div class="brand__title">
+        <span>
+            <ng-content></ng-content>
+        </span>
+    </div>
+    <div class="brand__content">
+        <swiper
+            [slidesPerView]="4"
+            [spaceBetween]="30"
+            [slidesPerGroup]="4"
+            [loop]="false"
+            [loopFillGroupWithBlank]="true"
+            [pagination]="{
+                clickable: false
+            }"
+            showsPagination={false}
+            [navigation]="true"
+            class="mySwiper">
+            <ng-template swiperSlide *ngFor = "let brand of brandArray">
+                <div class="brand__content__item">
+                    <div class="brand__content__item__image">
+                        <img [src]="brand.src" alt="" [style.height]="brand.name == 'HP' ? '80%' : ''">
+                    </div>
+                    <div class="brand__content__item__name">
+                        {{ brand.name }}
+                    </div>
+                </div>
+            </ng-template>
+        </swiper>
+    </div>
+</div>

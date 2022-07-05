@@ -1,0 +1,29 @@
+<div class="product-card" [style]="{'width': size.width, 'height': size.height}">
+    <div class="product-card__img">
+        <img [src]="image" alt="">
+    </div>
+    <div class="product-card__name">
+        <!-- Bàn phím cơ Gaming DAREU EK1280 RGB Blue -->
+        {{ name | briefNameProduct : 40}}
+    </div>
+    <div class="product-card__price">
+        <!-- 1000 AUD -->
+        {{ salePrice | currency : 'ADU' : "$AUD " }}
+    </div>
+    <div class="product-card__sale">
+        <div class="product-card__sale-origin">
+            {{ price | currency : 'ADU' : "$AUD "}}
+        </div>
+        <div class="product-card__sale-percent">
+            -{{ sale }}%
+        </div>
+    </div>
+    <div *ngIf="sale > 0" class="product-card__sale-card">
+        <div class="top">
+            Save
+        </div>
+        <div class="bottom">
+            {{ price - salePrice | currency : 'ADU' : "$AUD " }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,227 @@
+@import '../../../../../styles.scss';
+.product {
+    margin-bottom: 30px;
+    width: 80%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Roboto', sans-serif !important;
+    &__title {
+        display: flex;
+        align-items: center;
+        &__icon {
+            width: 35px;
+            height: 35px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(128, 128, 128, 0.15);
+            img {
+                width: 50%;
+            }
+        }
+       span {
+            margin: 16px 0;
+            background-color: white;
+            border-radius: 20px;
+            padding: 5px 10px;
+            border: 1px solid rgba(128, 128, 128, 0.15);
+       }
+    }
+    &__content {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        gap: 20px;
+        border-radius: 8px;
+        &-left {
+            background-color: white;
+            border-radius: 8px;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 7fr 10fr;
+            &__image {
+                padding-right: 16px;
+                img {
+                    width: 100%;
+                }
+            }
+            &__info {
+                &__name {
+                    margin-bottom: 5px;
+                    font : {
+                        size: 24px;
+                        weight: bold;
+                    }
+                }
+                &__brand {
+                    position: relative;
+                    margin: 10px 0;
+                    font : {
+                        size: 14px;
+                    }
+                    color: #82869E;
+                    span {
+                        color: $main-blue;
+                    }
+                    .slash {
+                        font : {
+                            size: 12px
+                        }
+                        color: #82869E;
+                        margin: 0 8px;
+                        margin-bottom: 10px;
+                        position: relative;
+                        bottom: 2px;
+                    }
+                }
+                &__notify {
+                    margin: 15px 0;
+                    font : {
+                        size: 12px;
+                    }
+                    color: #F78212;
+                }
+                &__sale-price {
+                    margin: 10px 0 5px 0;
+                    font : {
+                        size: 20px;
+                        weight: bold;
+                    }
+                    color: $main-blue;
+                }
+                &__origin-price {
+                    margin-bottom: 15px;
+                    text-decoration: line-through;
+                    font : {
+                        size: 12px;
+                    }
+                    color: #82869E;
+                }
+                hr {
+                    margin: 20px 0;
+                    border-top: 1px dashed gray;
+                }
+                &__gift {
+                    &__title {
+                        font : {
+                            weight: bold;
+                        }
+                    }
+                    &__card {
+                        margin-top: 10px;
+                    }
+                }
+                &__btn {
+                    margin: 15px 0;
+                    display: flex;
+                    justify-content: space-between;
+                    button {
+                        width: 49%;
+                        height: 46px;
+                        border: 1px solid $main-blue;
+                        border-radius: 5px;
+                        font : {
+                            size: 14px;
+                        }
+                        color: $main-blue
+                    }
+                    .buy {
+                        background-color: $main-blue;
+                        color: white;
+                        &:hover {
+                            background-color: #122ea8;
+                        }
+                    }
+                }
+                &__promotion {
+                    &__title {
+                        margin: 10px 0;
+                        font : {
+                            weight: bold;
+                        }
+                    }
+                    &__content {
+                        ul {
+                            margin-left: 20px;
+                            li {
+                                span {
+                                    color: $main-blue;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+                    &__banner {
+                        margin-top: 15px;
+                        img {
+                            width: 100%;
+                            border-radius: 8px;
+                        }
+                    }
+                }
+            }
+        }
+        &-right {
+            background-color: white;
+            border-radius: 8px;
+            height: 360px;
+            padding: 16px;
+            font : {
+                size: 14px;
+            }
+            &__item {
+                margin-bottom: 20px;
+                &__title {
+                    margin-bottom: 10px;
+                    font : {
+                        size: 15px;
+                        weight: bold;   
+                    }
+                }
+            }
+            ul {
+                list-style-type: none;
+                li {
+                    display: flex;
+                    align-items: center;
+                    div {
+                        margin-left: 10px;
+                    }
+                    svg {
+                        fill: $main-blue
+                    }
+                }
+
+                li + li {
+                    margin-top: 10px;
+                }
+            }
+
+            a {
+                text-decoration: none;
+                margin-left: 32px;
+                color: $main-blue;
+            }
+        }
+    }
+    &__des {
+        margin-top: 20px;
+        border-radius: 8px;
+        background-color: white;
+        padding: 24px;
+        &__title {
+            margin-bottom: 30px;
+            font : {
+                size: 20px;
+                weight: bold;
+            }
+        }
+        &__content {
+            font : {
+                size: 14px;
+            }
+        }
+    }
+}

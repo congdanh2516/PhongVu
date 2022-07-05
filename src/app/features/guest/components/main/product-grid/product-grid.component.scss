@@ -1,0 +1,81 @@
+.product {
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 10px 1px rgba(128, 128, 128, 0.13);
+    
+    border-radius: 8px;
+    &__title {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        background-color: white;
+        padding: 20px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.219);
+        font : {
+            size: 20px;
+            weight: bold;
+        }
+    }
+    &__grid {
+        background-color: white;
+        // border: 1px solid green;
+        width: 100%;
+        gap: 1px;
+        background-color: rgba(128, 128, 128, 0.171);
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        &__item {
+            width: 20%;
+        }
+    }
+    &__pagination {
+        text-align: center;
+        padding: 20px 0;
+    }
+}
+
+::ng-deep .ngx-pagination  {
+    li {
+        background-color: white;
+        border-radius: 3px !important;
+        border: 1px solid #cacaca;
+
+        a {
+            border-radius: 3px;
+        }
+    }
+    li + li {
+        margin-left: 10px;
+    }
+}
+
+::ng-deep .ngx-pagination .disabled:hover {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #cacaca;
+    background-color: white !important;
+}
+
+::ng-deep .ngx-pagination .current {
+    background: rgb(20, 53, 195) !important;
+}
+
+::ng-deep .ngx-pagination .pagination-previous a:before {
+    content: none !important;
+    margin-right: 0px !important;
+}
+
+::ng-deep .ngx-pagination .pagination-previous.disabled:before {
+    content: none !important;
+    margin-right: 0px !important;
+}
+
+::ng-deep .ngx-pagination .pagination-next a:after {
+    content: none !important;
+    margin-left: 0px !important;
+}
+
+::ng-deep .ngx-pagination .pagination-next.disabled:after {
+    content: none !important;
+    margin-left: 0px !important;
+}
+
+ 

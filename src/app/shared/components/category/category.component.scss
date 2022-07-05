@@ -1,0 +1,83 @@
+.category {
+    position: relative;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    &__item {
+        position: inherit;
+        width: 15%;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: white;
+        ul {
+            margin: 0;
+            padding: 0 0 0 10px;
+            li {
+                height: 32px;
+                // width: 188px;
+                line-height: 32px;
+                display: flex;
+                align-items: center;
+                .img {
+                    img {
+                        width: 25px;
+                    }
+                }
+                .title {
+                    margin-left: 10px;
+                    a {
+                        text-decoration: none;
+                        color: black;
+                        font : {
+                            size: 12px;
+                            weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__des {
+        padding: 10px;
+        position: inherit;
+        left: -10px;
+        width: 35%;
+        background-color: white;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+
+        &:hover {
+            display: block !important;
+        }
+
+        &__price {
+            &__title {
+                font : {
+                    size: 15px;
+                    weight: bold;
+                }
+            }
+            &__des {
+                margin-top: 10px;
+                ul {
+                    padding: 0;
+                    list-style-type: none;
+                    li {
+                        height: 25px;
+                        line-height: 25px;
+                        a {
+                            display: block;
+                            text-decoration: none;
+                            color: black;
+                            font : {
+                                size: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

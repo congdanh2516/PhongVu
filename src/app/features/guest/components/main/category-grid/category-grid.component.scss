@@ -1,0 +1,83 @@
+.category {
+    // width: 39%;
+    position: relative;
+    // left: 50%;
+    // transform: translateX(-50%);
+    background-color: white;
+    margin-top: 30px;
+    border-radius: 8px;
+    &__title {
+        padding: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        &-name {
+            font : {
+                size: 20px;
+                weight: bold;
+            }
+        }
+        &-view-all {
+            line-height: 29px;
+            opacity: .8;
+        }
+    }
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        &__image {
+            overflow: hidden;
+            border-bottom-left-radius: 8px;
+            img {
+                width: 100%;
+                height: 100%;
+                transition: all .3s ease;
+                border-bottom-left-radius: 8px;
+            }
+        }
+        &__category {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background-color: rgba(128, 128, 128, 0.589);
+            &__item {
+                background-color: white;
+                padding: 15px;
+                &__title {
+                    // border: 1px solid green;
+                    height: 15%;
+                    text-align: center;
+                    line-height: 25px;
+                    font : {
+                        size: 15px;
+                        weight: bold;
+                    }
+                }
+                &__des {
+                    // border: 1px solid green;
+                    height: 15%;
+                    text-align: center;
+                    font : {
+                        size: 13px;
+                    }
+                }
+                &__image {
+                    // height: 94px;
+                    height: 70%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    img {
+                        height: 94px;
+                        transition: all .3s ease;
+                    }
+                }
+            }
+        }
+    }
+}
+
+img:hover {
+    transform: scale(1.05);
+}

@@ -1,0 +1,103 @@
+@import '../../../../styles.scss';
+
+header {
+    position: relative;
+    z-index: 999;
+    position: sticky;
+    top: -1px;
+}
+
+.nav-bar {
+    background-color: white;
+    height: 88px;
+    padding: 0 10%;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0.5rem 1rem;
+
+    ul {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        #notification:hover path {
+            fill: none !important;
+            stroke: $main-blue !important;
+        }
+        li {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:hover a{
+                color: $main-blue;
+            }
+
+            &:hover path{
+                fill: $main-blue !important;
+            }
+
+            a {
+                display: block;
+                text-decoration: none;
+                text-align: center;
+                position: relative;
+                color: gray;
+                font-size: 13px;
+                svg {
+                    position: relative;
+                    margin: auto !important;
+                }
+                .title {
+                    margin-top: 10px;
+                    font-weight: 600;
+                }
+
+            }
+        }
+    }
+
+    &__logo-full {
+        width: 20%;
+    }
+
+    &__search {
+        width: 37%;
+        padding: 20px;
+        input {
+            height: 36px;
+            width: 365px;
+            border: none;
+            border-radius: 5px;
+            background-color: #afaeae28;
+            padding: 10px;
+
+            &:focus {
+                outline: none;
+            }
+        }
+        &__input {
+            border: 1px solid rgba(128, 128, 128, 0.315);
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            height: 40px;
+            &__btn {
+                width: 36px;
+                height: 36px;
+                background-color: $main-blue;
+                border-radius: 5px;
+                margin: 1px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__item {
+        width: 9%;
+    }
+}

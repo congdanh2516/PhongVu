@@ -1,0 +1,31 @@
+<app-banner></app-banner>
+<div class="content">
+    <app-limited-banner-sale></app-limited-banner-sale>
+    <app-category-banner-sale
+        [background]="'../../../assets/images/category-banner-sale/unnamed.jpg'"
+    >Laptop</app-category-banner-sale>
+    <app-category-banner-sale
+        [background]="'../../../assets/images/category-banner-sale/pc.jpg'"
+    >PC - Accessories</app-category-banner-sale>
+    <app-banner-set [pictureArray]="bannerSet1"></app-banner-set>
+    <app-banner-set [pictureArray]="bannerSet2"></app-banner-set>
+    <app-banner-set [pictureArray]="bannerSet3"></app-banner-set>
+    <app-outstanding-brand
+        [brandArray]="brandArray"    
+    >Outstanding brand</app-outstanding-brand>
+    <div class="category-grid">
+        <div class="category-grid__item">
+            <app-category-grid 
+                [imageSrc]="'https://lh3.googleusercontent.com/Gc9z_P0lY-0fDemLmqiYt2U7uD6meaQbcsRj0LG6O6a9keMfQZlvodVv8KKAP6U7UVUPpkzmFUfkmMIJIhultS8NnuutrIm-=rw-w400'"
+                [categoryArray]="categoryGrip1.slice(0,4)"
+            >MOUSE - GRAPHIC CARD - KEY BOARD - LAPTOP</app-category-grid>
+        </div>
+        <div class="category-grid__item">
+            <app-category-grid 
+                [imageSrc]="'https://lh3.googleusercontent.com/p1__OgN1GgjPysBrNkZJRmEZIMwtfRi6qwqVaSPX7wIJmvHI7b2Ol3gTCyR8CBDZ0ybmtfG2XoYWCsMZfKjflxwjKFuX8fhe9A=rw-w400'"
+                [categoryArray]="categoryGrip1.slice(4,7)"
+            >SMART PHONE - TABLET - RAM</app-category-grid>
+        </div>
+    </div>
+    <app-product-grid></app-product-grid>
+</div>
