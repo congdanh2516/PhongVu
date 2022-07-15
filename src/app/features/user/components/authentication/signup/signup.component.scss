@@ -1,0 +1,134 @@
+@import '../../../../../../styles.scss';
+.signup {
+    position: relative;
+    width: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    // margin: 20px 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    &__title {
+        margin-bottom: 20px;
+        font : {
+            size: 16px;
+            weight: 500;
+        }
+    }
+    &__content {
+        &__name {
+            display: flex;
+            input {
+                width: 180px;
+            }
+        }
+        &__info {
+            display: flex;
+            margin-top: 20px;
+            input, select {
+                width: 180px;
+            }
+        }
+        &__phone, &__email, &__password, &__re-password {
+            input {
+                width: 100%;
+            }
+            margin-top: 20px;
+        }
+        &__phone {
+            label {
+                display: block;
+            }
+        }
+        &__email, &__password, &__re-password {
+            label {
+                display: inline-block !important;
+                margin-right: 10px;
+            }
+        }
+        .input-item {
+            label {
+                display: block;
+            }
+        }
+        .input-item + .input-item {
+            margin-left: 15px;
+        }
+
+        input, select {
+            height: 30px;
+            border: none;
+            border-bottom: 1px solid black;
+            padding: 2px;
+            transition: all .3s ease;
+        }
+        input[type=text]:focus, input[type=password]:focus {
+            outline: none;
+            border-bottom: 2px solid black;
+            padding: 8px;
+            transition: all .3s ease;
+        }
+        input[type=date] select {
+            height: 35px;
+            &:focus {
+                outline: none;
+                border-bottom: 2px solid black;
+                transition: all .3s ease;
+            }
+        }
+        label {
+            margin-bottom: 0;
+            color: rgba(128, 128, 128, 0.787);
+        }
+        &__button {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            button {
+                width: 48%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            &--reset {
+                @include button(white, black, black);
+                &:hover {
+                    background-color: white;
+                }
+                &:focus {
+                    border: 1px solid black;
+                }
+            }
+            &--create {
+                @include button($main-blue, white, $main-blue);
+            }
+        }
+    }
+}
+
+::ng-deep ngx-intl-tel-input input {
+    min-width: 375px !important;
+    min-height: 35px !important;
+    border: none;
+    border-bottom: 1px solid black;
+    transition: all .3s ease;
+    &:focus {
+        outline: none;
+        border-bottom: 2px solid black;
+        transition: all .3s ease;
+    }
+}
+
+::ng-deep ngx-intl-tel-input .dropdown-menu{
+    max-width: 375px !important;
+}
+
+.spinner-border {
+    margin-left: 10px;
+    height: 15px !important;
+    width: 15px !important;
+    
+    border: 1px solid currentColor !important;
+    border-right-color: transparent !important;
+}

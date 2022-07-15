@@ -1,0 +1,216 @@
+<div *ngIf="isLoading" class="loader">
+    <app-loader></app-loader>
+</div>
+<!-- !isLoading -->
+<div class="payment" *ngIf="!isLoading">
+    <div class="payment__info">
+        <div class="payment__info__title">
+            Delivery Infomation 
+            <div class="spinner-border text-primary" role="status" *ngIf="isLoadingAddress">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="payment__info__content">
+            <div class="payment__info__content1">
+                <!--  -->
+                <div class="payment__info__content1__item"
+                    [style.opacity]="isLoadingAddress ? '0.7' : '1'"
+                    [style.cursor]="isLoadingAddress ? 'default' : 'pointer'"
+                    [class.payment__info__content1__item--active]="addressIsChoosed == i" 
+                    *ngFor="let address of addressList; index as i" 
+                    (click)="chooseAddressCurrent(address._id, i)">
+                    <div class="payment__info__content1__item__name">
+                        {{ address.fullName }}
+                        <span class="default" *ngIf="address.isDefault">Default</span>
+                        <div class="button">
+                            <span class="button-modify" (click)="modifyAddress(address.id)" data-bs-toggle="modal" data-bs-target="#address"><i class="fa-solid fa-pen"></i></span>
+                            <span class="button-delete" (click)="deleteAddress(address.id)"><i class="fa-solid fa-trash-can"></i></span>
+                        </div>
+                    </div>
+                    <div class="payment__info__content1__item__phone">
+                        {{ address.phone }}
+                    </div>
+                    <div class="payment__info__content1__item__address">
+                        {{ address.fullAddress }}
+                    </div>
+                </div>
+            </div>
+            <div class="payment__info__content__btn" (click)="openFormAddNewAddress()" data-bs-toggle="modal" data-bs-target="#address">
+                <span>Add new address &nbsp; <i class="fa-solid fa-plus"></i></span>
+            </div>
+        </div>
+        <div class="payment__method">
+            <div class="payment__method__title">
+                Payment method
+            </div>
+            <div class="payment__method__content">
+                <div class="payment__method__content-appear">
+                    <div class="payment__method__content-appear__item" 
+                        (click)="choosePaymentMethod('online')"
+                        [class.payment__method__content-appear__item--active]="paymentMethodIsChoosed == 'online'">
+                        <div class="payment__method__content-appear__item__title" style="position: relative;">
+                            Online payment
+                            <div class="spinner-border text-primary" role="status" style="position: absolute; right: 0px;" *ngIf="isLoadingPaymentMethod">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="payment__method__content-appear__item__des">
+                            Pay through Stripe
+                        </div>
+                    </div>
+                    <div class="payment__method__content-appear__item" 
+                        (click)="choosePaymentMethod('cod')"
+                        [class.payment__method__content-appear__item--active]="paymentMethodIsChoosed == 'cod'">
+                        <div class="payment__method__content-appear__item__title">
+                            COD
+                        </div>
+                        <div class="payment__method__content-appear__item__des">
+                            Cash on Delivery
+                        </div>
+                    </div>
+                </div>
+                <!-- [style.display]="paymentMethodIsChoosed == 'online' ? 'block' : 'none'" -->
+                <div class="payment__method__content-disappear"
+                    [class.payment__method__content-disappear--active]="paymentMethodIsChoosed == 'online' && isLoadingPaymentMethod == false">
+                    <div class="payment__method__content-disappear__cart">
+                        <!-- <div class="payment__method__content-disappear__cart__item" style="background-color: rgb(53, 136, 168);">
+                            <div class="hover">
+                                <div class="image">
+                                    <img src="../../../../../../assets/images/visa cart/212-2128294_visa-logo-png-image-visa-logo-white-png.png" alt="">
+                                </div>
+                                <div class="number-card">
+                                    **** **** **** 4242
+                                </div>
+                                <div class="info">
+                                    <div class="info-name">
+                                        CAO CONG DANH
+                                    </div>
+                                    <div class="info-expire">
+                                        EXP <span>09/25</span>
+                                    </div>
+                                    <div class="info-cvv">
+                                        CVV <span>123</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="card"  *ngFor="let card of listPaymentMethod; index as i"
+                            [class.card--active]="cardIsChoosed == i">
+                            <app-card (click)="chooseCard(card.id, i)"
+                                [cardName]="card.billing_details.name"
+                                [cardNumber]="card.card.last4"
+                                [expireMonth]="card.card.exp_month"
+                                [expireYear]="card.card.exp_year"
+                                [cvc]="'123'"
+                            ></app-card>
+                        </div>
+                        <!-- <div class="payment__method__content-disappear__cart__item">
+                           
+                        </div> -->
+                    </div>
+                    <div class="payment__method__content-disappear__add-new" (click)="openDialog()">
+                        <span>Add new cart &nbsp; <i class="fa-solid fa-plus"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="payment__right">
+        <div class="payment__right__order-info">
+            <div class="payment__right__order-info__header">
+                <div class="payment__right__order-info__header__title">
+                    Order Info
+                </div>
+                <button routerLink="/cart" class="payment__right__order-info__header__modify">
+                    Modify
+                </button>
+            </div>
+            <div class="payment__right__order-info__content">
+                <div class="payment__right__order-info__content__item" *ngFor="let product of productList">
+                    <div class="payment__right__order-info__content__item__image">
+                        <img [src]="product.image" alt="">
+                    </div>
+                    <div class="payment__right__order-info__content__item__info">
+                        <div class="name">
+                            {{ product.productName }}
+                        </div>
+                        <div class="quantity">
+                            Quantity {{ product.quantity }}
+                        </div>
+                        <div class="sale-price">
+                            {{ product.price * (1 - product.sale / 100) | currency : 'AUD' : '$AUD ' }}
+                        </div>
+                        <div class="origin-price">
+                            {{ product.price | currency : 'AUD' : '$AUD '}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="payment__right__tech-support">
+            <div class="payment__right__tech-support__checkbox">
+                <input type="checkbox" name="" id="" (change)="chooseOnsiteSuppor()"> On-site technical support
+            </div>
+            <div class="payment__right__tech-support__value">
+                {{ techSupportValue | currency : 'AUD' : '$AUD '}}
+            </div>
+        </div>
+        <div class="payment__right__checkout">
+            <div class="payment__right__checkout__title">
+                Checkout
+            </div>
+            <div class="payment__right__checkout__content">
+                <div class="payment__right__checkout__content__item">
+                    <div class="title">
+                        Provisional
+                    </div>
+                    <div class="value">
+                        {{ total | currency : 'AUD' : '$AUD '}}
+                    </div>
+                </div>
+                <div class="payment__right__checkout__content__item">
+                    <div class="title">
+                        Transport fee
+                    </div>
+                    <div class="value">
+                        {{ transportFee | currency : 'AUD' : '$AUD '}}
+                    </div>
+                </div>
+                <div class="payment__right__checkout__content__item" *ngIf="onsiteSupport!=0">
+                    <div class="title">
+                        On-site technical support
+                    </div>
+                    <div class="value">
+                        {{ onsiteSupport | currency : 'AUD' : '$AUD '}}
+                    </div>
+                </div>
+                <div class="payment__right__checkout__content__item">
+                    <div class="title">
+                        Total
+                    </div>
+                    <div class="value" style="color: red;">
+                        {{ total + transportFee + onsiteSupport | currency : 'AUD' : '$AUD '}}
+                    </div>
+                </div>
+            </div>
+            <button class="payment__right__checkout__button" (click)='pay()'>
+                <p *ngIf="!isLoadingBuyNow">Buy now</p>
+                <div *ngIf="isLoadingBuyNow" class="spinner-border text-light" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- <button (click)="addPaymentMethod()">Continue</button> -->
+
+<div class="modal fade" id="address" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+    style="background-color: transparent !important; margin: auto !important;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <app-add-address [addressId]="purposeAddressForm"></app-add-address>
+        </div>
+      </div>
+    </div>
+  </div>

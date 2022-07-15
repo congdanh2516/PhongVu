@@ -15,11 +15,20 @@ import { AppComponent } from './app.component';
 // import { FooterComponent } from './shared/components/footer/footer.component';
 // import { HeaderComponent } from './shared/components/header/header.component';
 import { InterceptorService } from './core/service/loader/interceptor.service';
+import { StripeModule } from 'stripe-angular';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { HeaderModule } from './shared/components/header/header.module';
+import { NgxStripeModule } from 'ngx-stripe';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+// import { HiddenPasswordPipe } from './core/pipe/hiddenPassword/hidden-password.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // FooterComponent,FooterComponent
+    // HiddenPasswordPipe,
+    // FooterComponent,
     // HeaderComponent
   ],
   imports: [
@@ -33,7 +42,14 @@ import { InterceptorService } from './core/service/loader/interceptor.service';
     MatButtonModule,
     MatRadioModule,
     MatProgressSpinnerModule,
-    RouterModule
+    MatDialogModule,
+    RouterModule,
+    StripeModule,
+    HeaderModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgxStripeModule.forRoot('pk_test_51KxEc0JsyzcmxeMthvDJvy8lLHbDXIU3uggTgPC4oXvUDwL1DNt7srJwYKzzJyG7NLDv9MjprFy7DZPgoHxieMaS00tFsI8FNI'),
+    NgxIntlTelInputModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}

@@ -1,0 +1,120 @@
+<div class="cart">
+    <div class="row">
+        <div class="col-md-8 cart__title">
+            <div class="cart__title__name">
+                Cart 
+            </div>
+            <div class="cart__title__delete-all">
+                Delete all
+            </div>
+        </div>
+    </div>
+    <div class="cart__content">
+        <div class="cart__content__left">
+            <div class="row cart__content__left__header">
+                <div class="col-md-1 cart__content__left__header__checkbox">
+                    <!-- <input type="checkbox" name="" id=""> -->
+                    <span class="example-list-section">
+                        <mat-checkbox class="example-margin"
+                                      [checked]="allComplete"
+                                      [color]="task.color"
+                                      [indeterminate]="someComplete()"
+                                      (change)="setAll($event.checked)">
+                          <!-- {{task.name}} -->
+                        </mat-checkbox>
+                      </span>
+                </div>
+                <div class="col-md-5 cart__content__left__header__brand">
+                    <div class="cart__content__left__header__brand__logo">
+                        <img src="https://lh3.googleusercontent.com/qOnchEYD7No58bjEQs5pf_05IV-0DmoaCmEFXD007VHs5cn16LZ6PC98IlY3OiBL9UXsEwNzwiVHRrvSDMQ" alt="">
+                    </div>
+                    <div class="cart__content__left__header__brand__name">
+                        PHONG VU TRADING - SERVICE JOINT STOCK COMPANY
+                    </div>
+                </div>
+                <div class="col-md-2 cart__content__left__header__price">
+                    Price
+                </div>
+                <div class="col-md-2 cart__content__left__header__quantity">
+                    Quantity
+                </div>
+                <div class="col-md-2 cart__content__left__header__total">
+                    Total
+                </div>
+            </div>
+            <div *ngIf="isLoading" style="position: relative; top: 30%; transform: translateY(-30%);">
+                <app-loader></app-loader>
+            </div>
+            <div [style.display]="!isLoading ? 'block' : 'none'">
+                <div class="cart__content__left__item" *ngFor = "let subtask of task.subtasks">
+                    <app-cart-item [idProduct]="subtask.productId" [quantity]="subtask.quantity" 
+                        (hasChange)="calculateTotal($event)">
+                        <!-- <input type="checkbox" name="choose" id="" checked="choose" (change)="choose = !choose"> -->
+                        
+                        <!-- [(ngModel)]="subtask.completed"
+                        [color]="subtask.color"
+                        (ngModelChange)="updateAllComplete()"> -->
+                        <mat-checkbox color="primary" 
+                            [(ngModel)]="subtask.completed"
+                            (ngModelChange)="updateAllComplete()"
+                        >
+                        
+                        </mat-checkbox>
+                    </app-cart-item>
+                </div>          
+            </div> 
+        </div>
+        <div class="row cart__content__right">
+            <div class="col-md-12">
+                <div class="row cart__content__right__discount">
+                    <div class="row cart__content__right__discount__title">
+                        Select discount code/coupon
+                    </div>
+                    <div class="row cart__content__right__discount__input">
+                        <div class="col-md-8">
+                            <input type="text" name="" id="" placeholder="Enter your code">
+                        </div>
+                        <div class="col-md-4">
+                            <button>Apply now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart__content__right__checkout">
+                    <div class="cart__content__right__checkout__title">
+                        Check out
+                    </div>
+                    <div style="height: 114px;" *ngIf="isLoadingTotal">
+                        <app-loader ></app-loader>
+                    </div>
+                    <div *ngIf="!isLoadingTotal">
+                        <div class="cart__content__right__checkout__provisional">
+                            <div class="cart__content__right__checkout__provisional__name">
+                                Provisional
+                            </div>
+                            <div class="cart__content__right__checkout__provisional__value">
+                                {{ total | currency : 'AUD' : '$AUD '}}
+                            </div>
+                        </div>
+                        <div class="cart__content__right__checkout__total">
+                            <div class="cart__content__right__checkout__total__name">
+                                Total
+                            </div>
+                            <div class="cart__content__right__checkout__total__value">
+                                {{ total | currency : 'AUD' : '$AUD '}}
+                            </div>
+                        </div>
+                        <div class="cart__content__right__checkout__vat">
+                            (VAT included)
+                        </div>
+                    </div>
+                    <div class="cart__content__right__checkout__btn">
+                        <button (click)="pay()">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div *ngIf="task.subtasks.length > 0">
+    Nothing is here
+</div> -->

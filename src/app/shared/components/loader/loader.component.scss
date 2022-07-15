@@ -1,0 +1,20 @@
+@import "../../../../styles.scss";
+.loader {
+    margin: auto; 
+    width: 100%; 
+    display: flex; 
+    justify-content: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: $main-blue !important;
+    stroke-width: 2% !important;
+    r: 20 !important;
+    animation-duration: 9000ms !important;
+    animation-timing-function: cubic-bezier(0.5, 0, 0.5, 1) !important;
+    stroke-dasharray: 140.743px !important;
+}

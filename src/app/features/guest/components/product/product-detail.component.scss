@@ -9,6 +9,8 @@
     &__title {
         display: flex;
         align-items: center;
+        height: 60px;
+        margin: 10px 0;
         &__icon {
             width: 35px;
             height: 35px;
@@ -19,10 +21,10 @@
             justify-content: center;
             border: 1px solid rgba(128, 128, 128, 0.15);
             img {
-                width: 50%;
+                width:100%;
             }
         }
-       span {
+       div {
             margin: 16px 0;
             background-color: white;
             border-radius: 20px;
@@ -125,13 +127,32 @@
                         font : {
                             size: 14px;
                         }
-                        color: $main-blue
+                        color: $main-blue;
+                        &:focus {
+                            border: 1px solid $main-blue;
+                            outline: none;
+                        }
                     }
                     .buy {
                         background-color: $main-blue;
                         color: white;
                         &:hover {
                             background-color: #122ea8;
+                        }
+                    }
+                    .add-to-cart {
+                        display: flex;
+                        position: relative;
+                        .name {
+                            width: 100%;
+                            line-height: 44px;
+                        }
+                        .spinner-border {
+                            position: absolute;
+                            right: 4%;
+                            top: 25%;
+                            height: 20px;
+                            width: 20px;
                         }
                     }
                 }
@@ -224,4 +245,31 @@
             }
         }
     }
+}
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: $main-blue !important;
+    stroke-width: 5% !important;
+    // r: 20 !important;
+}
+
+.loading {
+    height: 100px;
+    width: 100px;
+    left: 110%;
+    top: 35%;
+    position: relative;
+}
+
+.spinner-border {
+    display: inline-block;
+    height: 20px !important;
+    width: 20px !important;
+    vertical-align: text-bottom;
+    border: 1px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: spinner-border .75s linear infinite;
+    animation: spinner-border .75s linear infinite;
+
 }

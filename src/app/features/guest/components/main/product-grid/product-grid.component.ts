@@ -18,7 +18,6 @@ export class ProductGridComponent implements OnInit {
   ngOnInit(): void {
     this.product_sv.getProductList().subscribe((data: any) => {
       this.productList = data.data;
-      console.log('df', this.productList);
     })
   }
 

@@ -20,7 +20,7 @@ export class ProductService {
     return this.http.get<Product[]>(api, httpOption);
   }
 
-  getProductById (id: string) : Observable<any> {
+  getProductById (id: string) : Observable<any>  {
     let api = Config.url + `/products/${id}`;
     return this.http.get<Product>(api, httpOption);
   }

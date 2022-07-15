@@ -1,0 +1,60 @@
+<form class="address" [formGroup]="addressInfo" (ngSubmit)="addNewAddress()">
+    <div class="address__info">
+        <div class="address__info__title">
+            Contact infomation
+            <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <div class="address__info__content">
+            <div class="address__info__content__name">
+                <label for="">Full name</label>
+                <input type="text" name="" id="" formControlName="fullName">
+            </div>
+            <div class="address__info__content__contact">
+                <label for="">Phone</label>
+                <input type="text" name="" id="" formControlName="phone">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="address__address">
+        <div class="address__address__title">
+            Delivery info
+        </div>
+        <div class="address__address__content">
+            <div class="address__address__content__item">
+                <div class="address__address__content__item__child">
+                    <label for="">City</label>
+                    <input type="text" name="" id="" formControlName="city">
+                </div>
+                <div class="address__address__content__item__child">
+                    <label for="">District</label>
+                    <input type="text" name="" id="" formControlName="district">
+                </div>
+            </div>
+            <div class="address__address__content__item">
+                <div class="address__address__content__item__child">
+                    <label for="">Ward</label>
+                    <input type="text" name="" id="" formControlName="ward">
+                </div>
+                <div class="address__address__content__item__child">
+                    <label for="">Address</label>
+                    <input type="text" name="" id="" formControlName="address">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="address__default">
+        <input type="checkbox" name="" id="" formControlName="isDefault">
+        <label for="">Set this address as default</label> 
+    </div>
+    <div class="address__button">
+        <!-- <div class="address__button__cancel">
+            Cancel
+        </div> -->
+        <div class="address__button__add">
+            <p *ngIf="addressId == ''">Add address</p><p *ngIf="addressId != ''">Modify</p>
+        </div>
+    </div>
+</form>

@@ -7,7 +7,7 @@ import { ProductService } from '../../../services/product/product.service';
   templateUrl: './category-banner-sale.component.html',
   styleUrls: ['./category-banner-sale.component.scss']
 })
-export class CategoryBannerSaleComponent implements OnInit, OnChanges {
+export class CategoryBannerSaleComponent implements OnInit {
 
   @Input()background : string;
   productList: Product[] = [];
@@ -22,12 +22,6 @@ export class CategoryBannerSaleComponent implements OnInit, OnChanges {
   getProductList () {
     this.product_sv.getProductList().subscribe(data => {
       this.productList = data.data;
-      console.log("Product list", this.productList);
     })
   }
-
-  ngOnChanges(changes: SimpleChanges): void {
-      console.log(this.background);
-  }
-
 }

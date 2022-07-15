@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from 'src/app/core/service/local-storage/local-storage.service';
 import { CategoryService } from 'src/app/shared/components/category/services/category.service';
 // import Swiper core and required modules
 import SwiperCore, { Pagination, Navigation } from "swiper";
@@ -80,13 +81,21 @@ export class GuestComponent implements OnInit {
 
   categoryGrip1 : Array<any> = [];
 
-  constructor(private category_sv: CategoryService) { }
+  constructor(private category_sv: CategoryService, private storage_sv: LocalStorageService) { }
 
   ngOnInit(): void {
+    this.storage_sv.removeItem('paid');
     this.category_sv.getCategory().subscribe((data: any) => {
       this.categoryGrip1 = data.data;
       console.log(this.categoryGrip1);
     })
   }
+
+  // stripe = Stripe('pk_test_51LJv4HDdIFQS1vEqAVoTkuDNZLUdHJIbzF2eDKHpnDc7Nysi9qCIrmwVVuRP9baye4ZOc7RPpnaprIbjQeM1EHpI00BqTRBiT4');
+  
+  // setStripe () {
+  //   this.stripe.confirmCardSetup({}, paymentMethod: {card} )
+  // }
+
 
 }

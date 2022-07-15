@@ -11,7 +11,7 @@ import { LoaderService } from 'src/app/core/service/loader/loader.service';
 export class LimitedBannerSaleComponent implements OnInit {
 
   cardClicked : string = "left";
-  deadline : Date = new Date(2022,6,15);
+  deadline : Date = new Date(2022,6,16);
   productList : Product[] = [];
   size = {width: '178px', height: '266px'}
 
@@ -24,7 +24,6 @@ export class LimitedBannerSaleComponent implements OnInit {
   getProductList () {
     this.product_sv.getProductList().subscribe(data => {
       this.productList = data.data;
-      console.log("Product list", this.productList);
     })
   }
  

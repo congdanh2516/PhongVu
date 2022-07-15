@@ -1,0 +1,21 @@
+<div class="card" [ngStyle]="{'background-color': backgroundColor}">
+    <div class="card__into">
+        <div class="image">
+            <img src="../../../../../../../assets/images/visa cart/212-2128294_visa-logo-png-image-visa-logo-white-png.png" alt="">
+        </div>
+        <div class="number-card">
+            **** **** **** {{ cardNumber }}
+        </div>
+        <div class="info">
+            <div class="info-name">
+                {{ cardName }}
+            </div>
+            <div class="info-expire">
+                EXP <span>{{ expireMonth + "/" + expireYear.toString().substring(2,4) }}</span>
+            </div>
+            <div class="info-cvv">
+                CVC <span>{{ cvc }}</span>
+            </div>
+        </div>
+    </div>
+</div>

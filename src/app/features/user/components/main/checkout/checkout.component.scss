@@ -1,0 +1,62 @@
+@import '../../../../../../styles.scss';
+.checkout {
+    &__title {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font : {
+            size: 17px;
+            weight: 500;
+        }
+        &__name {
+            line-height: 47px;
+            display: inline-block;
+        }
+        &__loader {
+            display: inline-block;
+            margin-left: 15px;
+        }
+    }
+    &__content {
+        // margin-top: 20px;
+        &__info {
+            margin-bottom: 25px;
+            &__item {
+                margin-top: 15px;
+                label {
+                    margin-bottom: 5px;
+                    display: block;
+                    color: #30313D;
+                    font : {
+                        size: 14.88px;
+                    }
+                    font-weight: 200;
+                }
+                input {
+                    padding: 10px;
+                }
+            }
+        }
+    }
+    &__pay {
+        display: flex;
+        justify-content: right;
+        label {
+            margin-left: 10px;
+
+        }
+        
+    }
+    button {
+        @include button($main-blue, white, $main-blue)
+    }
+}
+
+.spinner-pay {
+    height: 15px !important;
+    width: 15px !important;
+    
+    border: 1px solid currentColor !important;
+    border-right-color: transparent !important;
+}

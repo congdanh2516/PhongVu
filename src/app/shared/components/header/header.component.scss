@@ -25,6 +25,7 @@ header {
             stroke: $main-blue !important;
         }
         li {
+            cursor: pointer;
             height: 100%;
             display: flex;
             align-items: center;
@@ -44,6 +45,7 @@ header {
                 position: relative;
                 color: gray;
                 font-size: 13px;
+                cursor: pointer;
                 svg {
                     position: relative;
                     margin: auto !important;
@@ -99,5 +101,49 @@ header {
 
     &__item {
         width: 9%;
+        &__user {
+            cursor: pointer;
+            position: relative;
+            &__image {
+                // border: 1px solid $main-blue;
+                // padding: 2px;
+                width: 40px;
+                height: 40px;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 50%;
+                transition: all .15s ease;
+                img {
+                    position: relative;
+                    top: 0.5px;
+                    width: 98%;
+                    border-radius: 50%;
+                }
+            }
+            &__card{
+                display: none;
+                text-align: center;
+                padding: 10px;
+                position: absolute;
+                bottom: -50px;
+                width: 80px;
+                background-color: white;
+                border-radius: 5px;
+                box-shadow: 0 0 5px 1px gray;
+                cursor: pointer;
+                &:hover {
+                    display: block;
+                }
+            }
+        }
+        &:hover &__user__card {
+            display: block;
+        }
+        &:hover &__user__image {
+            border: 2px solid $main-blue;
+            padding: 2px;
+            transition: all .15s ease;
+        }
     }
 }

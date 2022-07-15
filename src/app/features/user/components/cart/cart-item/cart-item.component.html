@@ -1,0 +1,52 @@
+<div class="row cart">
+    <div class="col-md-1 cart__checkbox">
+        <!-- <input type="checkbox" name="" id="" checked="{{checked}}"> -->
+        <ng-content>
+            
+        </ng-content>
+    </div>
+    <div class="col-md-5 cart__info">
+        <div class="cart__info__image">
+            <img [src]="product.image" alt="">
+        </div>
+        <div class="cart__info__info">
+            <div class="cart__info__info__name">
+                {{ product.name | briefNameProduct : 50 }}
+            </div>
+            <div class="cart__info__info__sku">
+                SKU {{ product.sku }}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 cart__price">
+        <div class="cart__price__sale">
+            {{ product.price * 0.9 | currency : 'AUD' : '$AUD '}}
+        </div>
+        <div class="cart__price__origin">
+            {{ product.price | currency : 'AUD' : '$AUD '}}
+        </div>
+    </div>
+    <div class="col-md-2 cart__quantity">
+        <div class="row">
+            <div class="col-md-4 adjust" (click)="quantity > 1 ? adjust('-') : ''" [style.opacity]="quantity == 1 ? '0.3' : '1'" [style.cursor]="quantity == 1 ? 'initial' : 'pointer'">
+                -
+            </div>
+            <div class="col-md-4">
+                <input type="text" name="" id="" [value]="quantity">
+            </div>
+            <div class="col-md-4 adjust" (click)="adjust('+')">
+                <div *ngIf="!loading">+</div>
+                <div *ngIf="loading" class="spinner-border" role="status">
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+        </div>
+        <div style="position: absolute; top: 50px; font-size: 12px; color: red; cursor: pointer;"
+            (click)="deleteProduct()">
+            Remove
+        </div>
+    </div>
+    <div class="col-md-2 cart__total">
+        {{ product.price * 0.9 * quantity | currency : 'AUD' : '$AUD '}}
+    </div>
+</div>

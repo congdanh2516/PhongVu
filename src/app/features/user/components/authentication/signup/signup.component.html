@@ -1,0 +1,96 @@
+<form class="signup" [formGroup]="userForm" (ngSubmit)="createNewAccount()">
+    <div style="background-color: white; padding: 30px; border-radius: 8px;">
+        <div class="signup__title">
+            Create new account
+        </div>
+        <div class="signup__content">
+            <div class="signup__content__name">
+                <div class="input-item">
+                    <label for="">First name</label>
+                    <input type="text" name="" id="" formControlName="firstName">
+                </div>
+                <div class="input-item">
+                    <label for="">Last name</label>
+                    <input type="text" name="" id="" formControlName="lastName">
+                </div>
+            </div>
+            <div class="signup__content__info">
+                <div class="input-item">
+                    <label for="">Date of Birth</label>
+                    <input type="date" max="2010-01-01" name="" id="" formControlName="dob">
+                </div>
+                <div class="input-item">
+                    <label for="">Gender</label>
+                    <select name="" id="" formControlName="gender">
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="signup__content__phone">
+                <label for="">Phone</label>
+                <!-- <input type="text" name="" id="" formControlName="phone"> -->
+                <ngx-intl-tel-input
+                    [cssClass]="'custom'"
+                    [preferredCountries]="[CountryISO.UnitedStates, CountryISO.UnitedKingdom]"
+                    [enableAutoCountrySelect]="false"
+                    [enablePlaceholder]="true"
+                    [searchCountryFlag]="true"
+                    [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                    [selectFirstCountry]="false"
+                    [selectedCountryISO]="CountryISO.Vietnam"
+                    [maxLength]="15"
+                    [phoneValidation]="true"
+                    name="phone"
+                    formControlName="phone"
+                ></ngx-intl-tel-input>
+            </div>
+            <div class="signup__content__email">
+                <div class="input-item">
+                    <label for="">Email</label>
+                    <app-error-input-form *ngIf="(userForm.get('email')?.errors?.['required'] && userForm.get('email')?.touched)"
+                        [errorString]="'Email is required'">
+                    </app-error-input-form>
+                    <input type="text" name="" id="" formControlName="email">
+                </div>
+            </div>
+            <div class="signup__content__password">
+                <div class="input-item">
+                    <label for="">Password</label>
+                    <app-error-input-form *ngIf="(userForm.get('password')?.errors?.['required'] && userForm.get('password')?.touched)"
+                        [errorString]="'Password is required'">
+                    </app-error-input-form>
+                    <input type="password" name="" id="" formControlName="password" autocomplete="cc-name">
+                </div>
+            </div>
+            <div class="signup__content__re-password">
+                <div class="input-item">
+                    <label for="">Confirm password</label>
+                    <app-error-input-form *ngIf="checkErrorConfirmPassword"
+                        [errorString]="'Password is incorrect'">
+                    </app-error-input-form>
+                    <input type="password" name="" id="" (input)="clearError()" (blur)="confirmPassword()" 
+                        [(ngModel)]="confirmPassword_var" 
+                        [ngModelOptions]="{standalone: true}"
+                        autocomplete="cc-name"
+                    >
+                </div>
+            </div>
+            <div class="signup__content__button">
+                <button class="signup__content__button--reset" type="reset">
+                    Reset
+                </button>
+                <button class="signup__content__button--create">
+                    <p *ngIf="!isLoading">Create new account</p>
+                    <div *ngIf="isLoading" class="spinner-border text-light" role="status" >
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </button>
+            </div>
+            <div style="margin-top: 10px;">
+                <a routerLink="/login"><i class="fa-solid fa-chevron-left"></i>&nbsp;Back to Login</a>
+            </div>
+        </div>
+    </div>
+</form>

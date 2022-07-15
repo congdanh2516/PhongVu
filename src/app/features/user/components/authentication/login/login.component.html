@@ -1,0 +1,36 @@
+<div class="login">
+    <div class="login__login">
+        <div class="login__login__title">
+            Login 
+        </div>
+        <div class="login__login__notify">All field are required</div>
+        <app-error-input-form [errorString]="errorString"></app-error-input-form>
+        <div class="login__login__input">
+            <input type="text" name="" id="" placeholder="User name" [(ngModel)]="account.username" (keypress)="clearError()">
+            <input type="text" name="" id="" placeholder="Password" autocomplete="cc-name" (keypress)="clearError()"
+                [type]=" showPassword ? 'text' : 'password' "
+                [ngModel]="(account.password)" 
+                (ngModelChange)="account.password=$event">
+            <span *ngIf="!showPassword" (click)="showPassword = true"><i class="fa-solid fa-eye"></i></span>
+            <span *ngIf="showPassword" (click)="showPassword = false"><i class="fa-solid fa-eye-slash"></i></span>
+        </div>
+        <div class="login__login__password-issue">
+            <p>Forgot password</p>
+            <p>Reset password</p>
+        </div>
+        <div class="login__login__btn">
+            <button (click)="login()">
+                <p *ngIf="!isLoading">Login</p>
+                <div *ngIf="isLoading" class="spinner-border text-light" role="status" >
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </button>
+        </div>
+    </div>
+    <div class="login__signup">
+        <div>
+            Don't have an account
+            <button [routerLink]="'/signup'">Create new account</button>
+        </div>
+    </div>
+</div>

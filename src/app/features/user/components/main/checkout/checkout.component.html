@@ -1,0 +1,46 @@
+<div class="checkout">
+    <div class="checkout__title">
+        <div class="checkout__title__name">
+            <!-- Stripe payment -->
+            Add new card
+        </div>
+        <div class="checkout__title__loader" *ngIf="isLoading">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="checkout__content" *ngIf="!isLoading">
+        <ng-container *ngIf="elementsOptions?.clientSecret as clientSecret" >
+            <form class="checkout__content__info" [formGroup]="cardInfo" *ngIf="hiddenButtonPay">
+                <div class="checkout__content__info__item">
+                    <label for="">Card name</label>
+                    <input class="form-control" type="text" name="" id="" formControlName="name">
+                </div>
+                <div class="checkout__content__info__item">
+                    <label for="">Email</label>
+                    <input class="form-control" type="text" name="" id="" formControlName="email">
+                </div>
+            </form>
+            <ngx-stripe-payment [clientSecret]="clientSecret"></ngx-stripe-payment>
+            <div class="checkout__pay">
+                <input type="checkbox" name="" id="" [(ngModel)]="payByThisCard">
+                <label for="">Pay by this card</label>
+            </div>
+            <button (click)="addNewCard()" *ngIf="hiddenButtonPay">
+                <p *ngIf="!isLoadingPay && payByThisCard">Pay</p>
+                <p *ngIf="!isLoadingPay && !payByThisCard">Add new card</p>
+                <div class="spinner-border text-light spinner-pay" role="status" *ngIf="isLoadingPay">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </button>
+        </ng-container>
+    </div>
+
+    <!-- <ng-template [ngIf]="1==1">
+        <div class="checkout__loader">
+            <app-loader></app-loader>
+        </div>
+    </ng-template> -->
+</div>

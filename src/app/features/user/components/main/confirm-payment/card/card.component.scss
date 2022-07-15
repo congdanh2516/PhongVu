@@ -1,0 +1,52 @@
+.card {
+    cursor: pointer;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all .2s ease;
+    overflow: hidden;
+    width: 100%;
+    &__into {
+        .image {
+            width: 80px;
+            img {
+                width: 100%;
+            }
+        }
+        .number-card {
+            margin-top: 50px;
+        }
+        .info {
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            &-name {
+                font : {
+                    weight: 500;
+                }
+            }
+            &-expire {
+                span {
+                    font : {
+                        weight: 500;
+                    }
+                }
+            }
+            &-cvv {
+                text-align: right;
+                span {
+                    font : {
+                        weight: 500;
+                    }
+                }
+            }
+        }
+    }
+    &__into {
+        transition: all .3s ease;
+        &:hover {
+            transform: scale(1.03);
+            transition: all .3s ease;
+        }
+    }
+}

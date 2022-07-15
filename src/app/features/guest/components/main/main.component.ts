@@ -78,7 +78,6 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.category_sv.getCategory().subscribe((data: any) => {
       this.categoryGrip1 = data.data;
-      console.log(this.categoryGrip1);
     })
   }
 

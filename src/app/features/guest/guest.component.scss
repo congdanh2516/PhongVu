@@ -2,3 +2,10 @@
 @import "~swiper/css/pagination";
 @import "~swiper/css/navigation";
 
+.content {
+    width: 80%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 20px 0;
+}

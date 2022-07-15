@@ -1,11 +1,11 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-category-grid',
   templateUrl: './category-grid.component.html',
   styleUrls: ['./category-grid.component.scss']
 })
-export class CategoryGridComponent implements OnInit, OnChanges {
+export class CategoryGridComponent implements OnInit {
 
   @Input()imageSrc : string;
   @Input()categoryArray : Array<any> = [];
@@ -13,10 +13,6 @@ export class CategoryGridComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-      console.log('amnvam', this.categoryArray);
   }
 
 }

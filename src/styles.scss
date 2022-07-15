@@ -13,3 +13,28 @@ body {
 }
 
 $main-blue : #1434c3;
+
+@mixin button ($backgound-color, $color, $border){
+    height: 40px;
+    width: 100%;
+    background-color: $backgound-color;
+    color: $color;
+    border: 1px solid $border;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+        background-color: #122c9c;
+    }
+    margin: 10px 0;
+    &:focus {
+        border: none;
+        outline: none;
+    }
+    cursor: pointer;
+}
+
+.text-primary {
+    color: $main-blue !important;
+}

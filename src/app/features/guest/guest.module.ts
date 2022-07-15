@@ -5,6 +5,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule } from '@angular/router';
 import { HeaderModule } from 'src/app/shared/components/header/header.module';
 import { GuestRoutingModule } from './guest-routing.module';
+import { UserModule } from '../user/user.module';
 
 import { GuestComponent } from './guest.component';
 import { BannerComponent } from './components/main/banner/banner.component';
@@ -13,7 +14,7 @@ import { ProductCardComponent } from './components/main/product-card/product-car
 import { LimitedBannerSaleComponent } from './components/main/limited-banner-sale/limited-banner-sale.component';
 import { SwiperModule } from 'swiper/angular';
 import { TimerComponent } from './components/main/timer/timer.component';
-import { BriefNameProductPipe } from './pipe/briefNameProduct/brief-name-product.pipe';
+// import { BriefNameProductPipe } from '../../shared/pipe/briefNameProduct/brief-name-product.pipe';
 import { CategoryBannerSaleComponent } from './components/main/category-banner-sale/category-banner-sale.component';
 import { BannerSetComponent } from './components/main/banner-set/banner-set.component';
 import { OutstandingBrandComponent } from './components/main/outstanding-brand/outstanding-brand.component';
@@ -21,10 +22,11 @@ import { CategoryGridComponent } from './components/main/category-grid/category-
 import { ProductGridComponent } from './components/main/product-grid/product-grid.component';
 import { ProductDetailComponent } from './components/product/product-detail.component';
 import { GiftCardComponent } from './components/product/gift-card/gift-card.component';
-import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
+// import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MainComponent } from './components/main/main.component';
+import { StripeModule } from 'stripe-angular';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,7 @@ import { MainComponent } from './components/main/main.component';
     ProductCardComponent,
     LimitedBannerSaleComponent,
     TimerComponent,
-    BriefNameProductPipe,
+    // BriefNameProductPipe,
     CategoryBannerSaleComponent,
     BannerSetComponent,
     OutstandingBrandComponent,
@@ -41,7 +43,7 @@ import { MainComponent } from './components/main/main.component';
     ProductGridComponent,
     ProductDetailComponent,
     GiftCardComponent,
-    FooterComponent,
+    // FooterComponent,
     MainComponent
   ],
   imports: [
@@ -53,7 +55,9 @@ import { MainComponent } from './components/main/main.component';
     MatProgressSpinnerModule,
     RouterModule,
     HeaderModule,
-    GuestRoutingModule
+    GuestRoutingModule,
+    UserModule,
+    StripeModule
   ],
   exports: [
     GuestComponent,
